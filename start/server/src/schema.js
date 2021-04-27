@@ -22,7 +22,7 @@ const typeDefs = gql`
     token: String
   }
 
-  type Misson {
+  type Mission {
     name: String
     missionPatch(size: PatchSize): String
   }
@@ -36,6 +36,18 @@ const typeDefs = gql`
     launches: [Launch]!
     launch(id: ID!): Launch
     me: User
+  }
+
+  type Mutation {
+    bookTrips(launchIds: [ID]!): TripUpdateResponse!
+    cancelTrip(launchId: ID!): TripUpdateResponse!
+    login(email: String): User
+  }
+
+  type TripUpdateResponse {
+    success: Boolean!
+    message: String
+    launches: [Launch]
   }
 `;
 
